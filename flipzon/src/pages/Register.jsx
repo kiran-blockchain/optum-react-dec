@@ -15,13 +15,23 @@ export const Register =({})=>{
         let data = register;
         data[e.target.name]=e.target.value;
         setRegister({...data});
-    }
+    };
+    const countryList =[{
+        text:"India",
+        value:"IN"
+    },
+{
+    text:"United States",
+    value:"USA"
+}]
     return(
         <form className="ml-5 mt-5">
             <TextBox config={registerConfig.FirstName}
              onChange={handleChange} />
             <TextBox config={registerConfig.LastName} onChange={handleChange}/>
-            <DropDown config={registerConfig.Country} onChange={handleChange}/>
+            <DropDown config={registerConfig.Country} 
+            data={countryList}
+            onChange={handleChange}/>
             <TextBox config={registerConfig.Password} onChange={handleChange}/>
             <TextBox config={registerConfig.ConfirmPassword} onChange={handleChange}/>
             <pre>{JSON.stringify(register)}</pre>
