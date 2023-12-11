@@ -3,6 +3,7 @@
 //Component must return only one root tag 
 // All the html Tags must be closed.
 
+import { useState } from "react";
 import { Counter } from "./components/Counter";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
@@ -12,6 +13,10 @@ import { Register } from "./pages/Register";
 
 // use className instead of class while assigning the CSS
 export const App = ({ }) => {
+  const [cart,setCart] = useState([]);
+  const handleAddToCart = (item)=>{
+    setCart([...cart,item]);
+  }
   const headerConfig = {
     title: "FlipZon",
     data: [{
@@ -53,11 +58,11 @@ export const App = ({ }) => {
   return (
     <div>
       {/* Header is acting as child component */}
-      <Header config={headerConfig} />
+      <Header config={headerConfig} cartItems={cart} />
       <Counter/>
       <div className="container-fluid">
         {/* <Register /> */}
-        <Products/>
+        <Products handleAddToCart={handleAddToCart}/>
       </div>
 
       <Footer />

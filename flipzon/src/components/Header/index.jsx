@@ -1,6 +1,6 @@
 import { Navbar } from "./Navbar";
 
-export const Header = ({config}) => {
+export const Header = ({config,cartItems}) => {
     // const title = "Flipzon";
     return (
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
@@ -12,6 +12,9 @@ export const Header = ({config}) => {
                 <div class="collapse navbar-collapse" id="navbarColor01">
                     {/* Nav bar is acting as a child component*/}
                     <Navbar config={config}/>
+                    <li className="nav-item">
+                        <a className="nav-link">{cartItems.length}</a>
+                    </li>
                 </div>
             </div>
         </nav>

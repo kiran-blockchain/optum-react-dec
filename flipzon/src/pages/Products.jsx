@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 
-export const Products = () => {
+export const Products = ({handleAddToCart}) => {
     const [products, setProducts] = useState([]);
     const getProducts = async () => {
         const url = "https://dummyjson.com/products";
@@ -15,7 +15,7 @@ export const Products = () => {
     useEffect(() => {
         getProducts();
     }, []);
-
+    
     const buildProducts = () => {
         let result = products.map((item, index) => {
             return (
@@ -29,7 +29,9 @@ export const Products = () => {
                             <p class="card-text">{item.title}</p>
                             <p class="card-text">{item.description}</p>
                             <p class="card-text">{item.price}</p>
-                            <button class="btn btn-primary">Add to Cart</button>
+                            <button class="btn btn-primary" onClick={e=>{
+                                handleAddToCart(e,item);
+                            }}>Add to Cart</button>
                         </div>
                     </div>
                 </div>
