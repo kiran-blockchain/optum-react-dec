@@ -10,6 +10,7 @@ import { Header } from "./components/Header";
 import { TextBox } from "./components/TextBox";
 import { Products } from "./pages/Products";
 import { Register } from "./pages/Register";
+import { Timer } from "./components/Timer";
 
 // use className instead of class while assigning the CSS
 export const App = ({ }) => {
@@ -59,7 +60,8 @@ export const App = ({ }) => {
     <div>
       {/* Header is acting as child component */}
       <Header config={headerConfig} cartItems={cart} />
-      <Counter/>
+      <Timer/>
+      {/* <Counter/> */}
       <div className="container-fluid">
         {/* <Register /> */}
         <Products handleAddToCart={handleAddToCart}/>

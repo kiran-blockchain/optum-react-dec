@@ -2,8 +2,10 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 
 export const Products = ({handleAddToCart}) => {
+    console.log("I am inside products");
     const [products, setProducts] = useState([]);
     const getProducts = async () => {
+        console.log("I am inside the getProducts");
         const url = "https://dummyjson.com/products";
         try {
             const result = await axios.get(url);
@@ -13,7 +15,11 @@ export const Products = ({handleAddToCart}) => {
         }
     }
     useEffect(() => {
+        console.log("I am inside useEffect")
         getProducts();
+        return ()=>{
+            //do clean up
+        };
     }, []);
     
     const buildProducts = () => {
