@@ -3,6 +3,7 @@
 //Component must return only one root tag 
 // All the html Tags must be closed.
 
+import { Counter } from "./components/Counter";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { TextBox } from "./components/TextBox";
@@ -52,6 +53,7 @@ export const App = ({ }) => {
     <div>
       {/* Header is acting as child component */}
       <Header config={headerConfig} />
+      <Counter/>
       <div className="container-fluid">
         <Register />
       </div>

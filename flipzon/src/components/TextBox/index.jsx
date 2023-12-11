@@ -1,5 +1,11 @@
+import { useState } from "react"
 
-export const TextBox = ({config }) => {
+export const TextBox = ({config,onChange }) => {
+    // const [val,setValue] =useState('');
+    // const handleChange = (e=>{
+    //     //setValue(e.target.value)
+    //     onChange(e);
+    // })
     return (
         <div class="row mb-3">
             <label for={config.id}
@@ -8,7 +14,8 @@ export const TextBox = ({config }) => {
                 <input type={config.type}
                     class="form-control"
                     name={config.name}
-                    id={config.id}
+                    id={config.id}  
+                    onChange={onChange}
                     placeholder={config.placeholder} />
             </div>
         </div>
