@@ -7,6 +7,7 @@ import { Counter } from "./components/Counter";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { TextBox } from "./components/TextBox";
+import { Products } from "./pages/Products";
 import { Register } from "./pages/Register";
 
 // use className instead of class while assigning the CSS
@@ -55,7 +56,8 @@ export const App = ({ }) => {
       <Header config={headerConfig} />
       <Counter/>
       <div className="container-fluid">
-        <Register />
+        {/* <Register /> */}
+        <Products/>
       </div>
 
       <Footer />
