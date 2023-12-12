@@ -35,8 +35,12 @@ export const Register = ({ }) => {
         };
     };
     useEffect(()=>{
+        console.log("Regsiter => loading!!!!!")
         //at the time of loading the component.
         getCountries();
+        return()=>{
+            console.log("Register => unloading")
+        }
     },[]);
 
     return (

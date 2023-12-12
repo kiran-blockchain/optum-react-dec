@@ -15,10 +15,11 @@ export const Products = ({handleAddToCart}) => {
         }
     }
     useEffect(() => {
-        console.log("I am inside useEffect")
+        console.log("Products => Loading!!!!!")
         getProducts();
         return ()=>{
             //do clean up
+            console.log("Products => Unloading!!!!!")
         };
     }, []);
     

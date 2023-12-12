@@ -4,7 +4,7 @@ export const Timer = () => {
     const [displayTime, setTime] = useState('');
 
     useEffect(() => {
-
+        console.log("Timer => loading!!!!!!")
         setInterval(() => {
             const date = new Date();
             setTime(date.toUTCString());
@@ -12,6 +12,7 @@ export const Timer = () => {
 
         return()=>{
             clearInterval();
+            console.log("Timer => unloading!!!!!!")
         }
     }, [])
     return (
