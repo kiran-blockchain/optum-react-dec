@@ -1,10 +1,23 @@
 import axios from "axios";
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
+import { TextBox } from "../components/TextBox";
+import { loginConfig } from "../config/loginConfig";
+import { useFormik } from "formik";
+import { loginSchema } from "../utils/loginSchema";
 
 export const Login = ({ }) => {
     const [loginResult, setLoginResult] = useState({});//1st api Call
     const [profile, setProfile] = useState({});
-
+    const formik = useFormik({
+        validationSchema:loginSchema,
+        initialValues:{
+            username:'',
+            password:''
+        },
+        onSubmit:(values)=>{
+            console.log(values);
+        },
+    });
     const login = async () => {
         let loginData = {
             "username": "johnd",
@@ -41,8 +54,21 @@ export const Login = ({ }) => {
         //profile Api Call
         //set profile Result
     }, [loginResult])
+    const handleChange =useCallback((e)=>{
+        formik.handleChange(e);
+    },[]);
     return (
-        <h6>I am Login</h6>
+       <form>
+           <TextBox config={loginConfig.UserName}
+            onChange={handleChange}
+            formik={formik}/>
+           <TextBox config={loginConfig.Password} 
+           onChange={handleChange}
+           formik={formik}/>
+           <button className="btn btn-primary"
+            onClick={formik.handleSubmit}
+           >Login</button>
+       </form>
     )
 }
 // Create two state variables
