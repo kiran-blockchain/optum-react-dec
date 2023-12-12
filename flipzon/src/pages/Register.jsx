@@ -4,8 +4,24 @@ import { TextBox } from "../components/TextBox"
 import { registerConfig } from "../config/registerConfig"
 import axios from "axios"
 import { useApiGet } from "../hooks/useApiGet"
+import { useFormik } from "formik"
+import { registerSchema } from "../utils/registerSchema"
 
 export const Register = ({ }) => {
+    
+    const formik = useFormik({
+        initialValues:{
+            FirstName:"",
+            LastName:"",
+            Country:"",
+            Password:"",
+            ConfirmPassword:""
+        },
+        validationSchema:registerSchema,
+        onSubmit:(values)=>{
+            console.log(values);
+        }
+    })
     const { loading, error, data } = useApiGet('https://restcountries.com/v2/all')
     const [register, setRegister] = useState({
         FirstName: "",
@@ -15,9 +31,10 @@ export const Register = ({ }) => {
         ConfirmPassword: ""
     });
     const handleChange = useCallback((e) => {
-        let data = register;
-        data[e.target.name] = e.target.value;
-        setRegister({ ...data });
+        // let data = register;
+        // data[e.target.name] = e.target.value;
+        // setRegister({ ...data });
+        formik.handleChange(e);
     }, []);
 
     const showLoading = () => {
@@ -48,14 +65,22 @@ export const Register = ({ }) => {
             {showError()}
             {showLoading}
             <TextBox config={registerConfig.FirstName}
-                onChange={handleChange} />
-            <TextBox config={registerConfig.LastName} onChange={handleChange} />
-            <DropDown config={registerConfig.Country}
-                data={showCountryList()} onChange={handleChange}
+                onChange={handleChange} formik={formik} />
+            <TextBox config={registerConfig.LastName} 
+            onChange={handleChange}
+            formik={formik}
             />
-            <TextBox config={registerConfig.Password} onChange={handleChange} />
-            <TextBox config={registerConfig.ConfirmPassword} onChange={handleChange} />
-            <pre>{JSON.stringify(register)}</pre>
+            <DropDown config={registerConfig.Country}
+                data={showCountryList()} 
+                formik={formik}
+                onChange={handleChange}
+            />
+            <TextBox config={registerConfig.Password} 
+            formik={formik}
+            onChange={handleChange} />
+            <TextBox config={registerConfig.ConfirmPassword}
+            formik={formik}
+            onChange={handleChange} />
         </form>
     )
 }
