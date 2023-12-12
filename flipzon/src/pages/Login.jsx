@@ -12,7 +12,7 @@ export const Login = ({ }) => {
         }
         try {
             let result = await axios.post("https://fakestoreapi.com/auth/login", loginData);
-            setLoginResult({ ...login, ...result.data, userId: 1 })
+            setLoginResult({ ...loginResult, ...result.data, userId: 1 })
         } catch (ex) {
             console.log(ex);
         }
