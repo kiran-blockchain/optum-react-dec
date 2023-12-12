@@ -1,9 +1,11 @@
 import axios from "axios";
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { CartContext } from "../context/CartContext";
 
 export const Products = ({handleAddToCart}) => {
     console.log("I am inside products");
     const [products, setProducts] = useState([]);
+    const cartContext = useContext(CartContext);
     const getProducts = async () => {
         console.log("I am inside the getProducts");
         const url = "https://dummyjson.com/products";
@@ -37,7 +39,7 @@ export const Products = ({handleAddToCart}) => {
                             <p class="card-text">{item.description}</p>
                             <p class="card-text">{item.price}</p>
                             <button class="btn btn-primary" onClick={e=>{
-                                handleAddToCart(e,item);
+                                cartContext.updateCart(item);
                             }}>Add to Cart</button>
                         </div>
                     </div>

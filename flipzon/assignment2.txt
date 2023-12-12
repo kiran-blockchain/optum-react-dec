@@ -1,0 +1,8 @@
+1. Create a login page that takes username and password
+2. Make an api Call
+3. if the call is success then store the token in the AuthContext
+4. At the time of loading the app users will see only Register and login Pages
+5. Post login users should be able to see 
+    products,cart,profile and logout on the top navbar
+6. once the user click the logout we should have only 
+     login and register on the top navbar

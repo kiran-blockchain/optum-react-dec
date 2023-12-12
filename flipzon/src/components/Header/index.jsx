@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Navbar } from "./Navbar";
+import { CartContext } from "../../context/CartContext";
 
-export const Header = ({config,cartItems}) => {
+export const Header = ({config}) => {
+    const cartContext =  useContext(CartContext);
     // const title = "Flipzon";
     return (
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
@@ -13,7 +16,7 @@ export const Header = ({config,cartItems}) => {
                     {/* Nav bar is acting as a child component*/}
                     <Navbar config={config}/>
                     <li className="nav-item">
-                        <a className="nav-link">{cartItems.length}</a>
+                        <a className="nav-link">{cartContext.cartItems.length}</a>
                     </li>
                 </div>
             </div>

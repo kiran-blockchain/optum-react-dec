@@ -13,21 +13,23 @@ import { Register } from "./pages/Register";
 import { Timer } from "./components/Timer";
 import { AppRoutes } from "./AppRoutes";
 import { headerConfig } from "./config/headerConfig";
+import { CartContext } from "./context/CartContext";
 
 // use className instead of class while assigning the CSS
 export const App = ({ }) => {
-  const [cart,setCart] = useState([]);
-  const handleAddToCart = (item)=>{
-    setCart([...cart,item]);
+  const [cart, setCart] = useState([]);
+  const handleCart =(item)=>{
+    setCart([...cart,item])
   }
- 
   return (
-    <div>
-      {/* Header is acting as child component */}
-      <Header config={headerConfig} cartItems={cart} />
-           <AppRoutes/>
-      <Footer />
-    </div>
+    <CartContext.Provider value={{cartItems:cart,updateCart:handleCart}} >
+      <div>
+        {/* Header is acting as child component */}
+        <Header config={headerConfig} />
+        <AppRoutes />
+        <Footer />
+      </div>
+    </CartContext.Provider>
   )
 };
 
