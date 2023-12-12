@@ -1,7 +1,8 @@
+import { memo } from "react";
 
 
-export const DropDown = ({config,data,onChange }) => {
-
+export const DropDown = memo( ({config,data,onChange }) => {
+    console.log("dropdown => loading!!!!!")
     const buildOptions = ()=>{
         let result = data.map((item,index)=>{
            return  <option key={item.value+index} value={item.value}>{item.text}</option>
@@ -22,4 +23,4 @@ export const DropDown = ({config,data,onChange }) => {
             </div>
         </div>
     )
-}
+});

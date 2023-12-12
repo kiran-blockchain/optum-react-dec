@@ -1,6 +1,7 @@
-import { useState } from "react"
+import { memo, useState } from "react"
 
-export const TextBox = ({config,onChange }) => {
+export const TextBox =memo( ({config,onChange }) => {
+    console.log(config.name+"textbox => loading!!!!!")
     // const [val,setValue] =useState('');
     const handleChange = (e=>{
         //setValue(e.target.value)
@@ -20,4 +21,4 @@ export const TextBox = ({config,onChange }) => {
             </div>
         </div>
     )
-}
+})

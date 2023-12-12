@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { DropDown } from "../components/DropDown"
 import { TextBox } from "../components/TextBox"
 import { registerConfig } from "../config/registerConfig"
@@ -12,36 +12,37 @@ export const Register = ({ }) => {
         Password: "",
         ConfirmPassword: ""
     });
-    const [countryList,setCountryList] = useState([]);
-    const handleChange = (e) => {
+    const [countryList, setCountryList] = useState([]);
+    const handleChange = useCallback((e) => {
+
         let data = register;
         data[e.target.name] = e.target.value;
         setRegister({ ...data });
-    };
+    }, [] );
 
 
-    const getCountries = async()=>{
-        const url="https://restcountries.com/v2/all";
-        try{
+    const getCountries = async () => {
+        const url = "https://restcountries.com/v2/all";
+        try {
             let result = await axios.get(url);
-            
-            const mappedResult = result.data.map(x=>{
-                return {text:x.name,value:x.alpha3Code}
+
+            const mappedResult = result.data.map(x => {
+                return { text: x.name, value: x.alpha3Code }
             });
             console.log(mappedResult);
             setCountryList(mappedResult);
-        }catch(ex){
+        } catch (ex) {
             console.log(ex);
         };
     };
-    useEffect(()=>{
+    useEffect(() => {
         console.log("Regsiter => loading!!!!!")
         //at the time of loading the component.
         getCountries();
-        return()=>{
+        return () => {
             console.log("Register => unloading")
         }
-    },[]);
+    }, []);
 
     return (
         <form className="ml-5 mt-5">
@@ -49,8 +50,8 @@ export const Register = ({ }) => {
                 onChange={handleChange} />
             <TextBox config={registerConfig.LastName} onChange={handleChange} />
             <DropDown config={registerConfig.Country}
-                data={countryList}
-                onChange={handleChange} />
+                data={countryList} onChange={handleChange}
+            />
             <TextBox config={registerConfig.Password} onChange={handleChange} />
             <TextBox config={registerConfig.ConfirmPassword} onChange={handleChange} />
             <pre>{JSON.stringify(register)}</pre>
