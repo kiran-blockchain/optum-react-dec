@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { DemoUsePrevious } from "../components/DemoPrevious/Index";
 
 
 export const Cart = ({ }) => {
@@ -9,6 +10,7 @@ export const Cart = ({ }) => {
            <button className="btn btn-primary" onClick={e=>{
                inputText.current.style="color:red;background-color:green"
            }}>Highlight</button>
+           <DemoUsePrevious/>
            
         </div>
     )
