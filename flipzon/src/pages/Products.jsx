@@ -1,9 +1,13 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react"
 import { CartContext } from "../context/CartContext";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../store/CartReducer";
 
 export const Products = ({handleAddToCart}) => {
     console.log("I am inside products");
+    const dispatch = useDispatch();
+
     const [products, setProducts] = useState([]);
     const cartContext = useContext(CartContext);
     const getProducts = async () => {
@@ -39,7 +43,8 @@ export const Products = ({handleAddToCart}) => {
                             <p class="card-text">{item.description}</p>
                             <p class="card-text">{item.price}</p>
                             <button class="btn btn-primary" onClick={e=>{
-                                cartContext.updateCart(item);
+                               // cartContext.updateCart(item);
+                               dispatch(addItemToCart(item));
                             }}>Add to Cart</button>
                         </div>
                     </div>

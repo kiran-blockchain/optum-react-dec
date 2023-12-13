@@ -72,3 +72,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 # React Routing
 
 npm i react-router react-router-dom
+
+npm i redux react-redux redux @reduxjs/toolkit
