@@ -5,17 +5,25 @@ import { Register } from "./pages/Register"
 import { Products } from "./pages/Products"
 import { Cart } from "./pages/Cart"
 import { Profile } from "./pages/Porfile"
+import Authorizer from "./components/Authroizer"
 
-export const AppRoutes =()=>{
-    return(
+export const AppRoutes = () => {
+    return (
         <Routes>
-            <Route path="/home" element={<Home/>}/>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/register" element={<Register/>}/>
-            <Route path="/products" element={<Products/>}/>
-            <Route path="/cart" element={<Cart/>}/>
-            <Route path="/profile" element={<Profile/>}/>
-            <Route path="/*" element={<Login/>}/>
+            <Route path="/home" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/products" element={<Authorizer>
+                <Products />
+            </Authorizer>} />
+            <Route path="/cart" element={<Authorizer>
+                <Cart />
+            </Authorizer>} />
+            <Route path="/profile" element={
+                <Authorizer>
+                    <Profile />
+                </Authorizer>} />
+            <Route path="/*" element={<Login />} />
         </Routes>
     )
 }

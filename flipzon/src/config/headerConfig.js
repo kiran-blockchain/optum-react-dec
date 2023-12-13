@@ -21,7 +21,7 @@ export  const headerConfig = {
     {
       id: 4,
       name: "Logout",
-      url: "/"
+      url: "/logout"
 
     },
     {

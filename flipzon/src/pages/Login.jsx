@@ -20,9 +20,9 @@ export const Login = ({ }) => {
             username:'mor_2314',
             password:'83r5^_'
         },
-        onSubmit:(values)=>{
-            console.log(values);
-            dispatch(authenticateUser(values))
+        onSubmit:(x)=>{
+            console.log(x);
+            dispatch(authenticateUser(x))
         },
     });
     const login = async () => {
