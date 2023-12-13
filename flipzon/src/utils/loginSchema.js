@@ -13,7 +13,7 @@ export const loginSchema = yup.object({
     password: yup.string()
         .required('Password required')
         .matches(/[0-9]/,getCharacterValidation('digit'))
-        .matches(/[A-Z]/,getCharacterValidation('uppercase'))
+       // .matches(/[A-Z]/,getCharacterValidation('uppercase'))
         .matches(/[a-z]/,getCharacterValidation('lowercase'))
   
 })
